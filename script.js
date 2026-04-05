@@ -104,6 +104,7 @@ if (newsletterForm) {
   });
 }
 
+
 // ------------------- EMAILJS CONTACT FORM -------------------
 const YOUR_PUBLIC_KEY = "DERMLfwCwDL6Frbsi";
 const service_55yh58r = "service_55yh58r";
@@ -157,4 +158,6 @@ if (contactForm) {
         }, 5000);
       });
   });
+
+ 
 }
