@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusForge | Our Work – Projects</title>
+    <link rel="icon" type="image/png" href="asset/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for larger projects page */
+        .page-header {
+            text-align: center;
+            margin: 5rem 0 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 4rem;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+            color: #bbb;
+        }
+
+        .projects-grid-section {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .project-card {
+            background: #111118;
+            border-radius: 40px;
+            padding: 2.5rem;
+            transition: all 0.35s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: #181824;
+            border-color: rgba(192, 132, 252, 0.4);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-img {
+            font-size: 4rem;
+            color: #C084FC;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: #ccc;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tags span {
+            background: #1E1E2A;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* FIXED: centered stats row */
+        .projects-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            background: linear-gradient(145deg, #0F0F17, #0A0A0F);
+            border-radius: 60px;
+            padding: 2.5rem;
+            margin: 3rem auto;
+            text-align: center;
+            border: 1px solid rgba(192, 132, 252, 0.2);
+            max-width: 1100px;
+        }
+
+        .stat-badge {
+            flex: 0 1 auto;
+            min-width: 140px;
+        }
+
+        .stat-badge .number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #C084FC, #E879F9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+        }
+
+        .stat-badge p {
+            margin-top: 0.5rem;
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        /* Larger testimonial section */
+        .testimonials-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .testimonial-card-large {
+            background: #111118;
+            border-radius: 48px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border-left: 5px solid #C084FC;
+        }
+
+        .testimonial-card-large i {
+            font-size: 2.5rem;
+            color: #C084FC;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .testimonial-card-large p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-card-large h4 {
+            font-size: 1.2rem;
+            color: #C084FC;
+        }
+
+        /* CTA banner inside projects page */
+        .projects-cta {
+            background: linear-gradient(135deg, #0F0F17, #0A0A0F);
+            border-radius: 48px;
+            text-align: center;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 1100px;
+        }
+
+        .projects-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .projects-cta .btn {
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 860px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+
+            .project-card {
+                padding: 1.8rem;
+            }
+
+            .projects-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .testimonial-card-large {
+                padding: 1.8rem;
+            }
+
+            .testimonial-card-large p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-code-branch"></i> Nexus<span>Forge</span></a>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header reveal">
+            <h1>Our <span class="gradient-text">Creations</span></h1>
+            <p>Real websites, real results — crafted for ambitious brands across the globe.</p>
+        </section>
+
+        <!-- Stats row (now centered) -->
+        <div class="projects-stats container reveal">
+            <div class="stat-badge">
+                <span class="number">187+</span>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-badge">
+                <span class="number">124+</span>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-badge">
+                <span class="number">98%</span>
+                <p>Client Retention</p>
+            </div>
+            <div class="stat-badge">
+                <span class="number">6+</span>
+                <p>Years of Excellence</p>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <section class="projects-grid-section container">
+            <div class="projects-grid">
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-tshirt"></i></div>
+                    <h3>UrbanThreads</h3>
+                    <p>High-performance Shopify alternative — 200% faster checkout & mobile-first design. Integrated
+                        with AI recommendations.</p>
+                    <div class="project-tags"><span>E‑commerce</span><span>React</span><span>Node.js</span></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-coffee"></i></div>
+                    <h3>BeanCraft</h3>
+                    <p>Artisan coffee roasters: booking system + loyalty program integration. Monthly recurring revenue
+                        up by 45%.</p>
+                    <div class="project-tags"><span>Next.js</span><span>Node</span><span>MongoDB</span></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-gym"></i></div>
+                    <h3>IronFit AI</h3>
+                    <p>Gym membership platform with AI workout planner & live class booking. Scaled to 10k+ active
+                        users.</p>
+                    <div class="project-tags"><span>Vue</span><span>Firebase</span><span>TensorFlow</span></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-palette"></i></div>
+                    <h3>ArtSpace Gallery</h3>
+                    <p>Interactive 3D portfolio for contemporary artists — WebGL + CMS. Featured in Awwwards.</p>
+                    <div class="project-tags"><span>Three.js</span><span>Sanity</span><span>GSAP</span></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-car"></i></div>
+                    <h3>AutoElite</h3>
+                    <p>Luxury car dealership platform with live inventory, VR showroom, and financing calculator.</p>
+                    <div class="project-tags"><span>React</span><span>Stripe</span><span>VR</span></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-heartbeat"></i></div>
+                    <h3>MediFlow</h3>
+                    <p>Telemedicine appointment system with HIPAA compliance and video calls.</p>
+                    <div class="project-tags"><span>WebRTC</span><span>Django</span><span>PostgreSQL</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section reveal">
+            <div class="testimonial-card-large">
+                <i class="fas fa-quote-left"></i>
+                <p>“NexusForge built our entire store in under 2 weeks. Revenue increased by 83% in 3 months. The team’s
+                    attention to detail and performance optimization is unmatched.”</p>
+                <h4>— Sarah K., Founder of UrbanThreads</h4>
+            </div>
+            <div class="testimonial-card-large">
+                <i class="fas fa-quote-left"></i>
+                <p>“We needed a complex web app with AI features. NexusForge delivered ahead of schedule and under
+                    budget. Our user engagement tripled!”</p>
+                <h4>— Mike L., CTO of IronFit AI</h4>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="projects-cta container reveal">
+            <h3>Ready to build something amazing?</h3>
+            <p>Let’s turn your idea into a high-performance website.</p>
+            <a href="contact.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Hire Us Today</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3><i class="fas fa-code-branch"></i> NexusForge</h3>
+                <p>Where pixels meet performance — we build websites that work 24/7.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/arvit_kumar_77/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/Arvit_Kumar_77" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://github.com/arvitkumar" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/arvit-kumar-01a5a9325/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BfY0Euqt8QJqQI4v2pjj86Q%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4><a href="index.html">Home</a><a href="projects.html">Projects</a><a
+                    href="contact.html">Contact</a>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4><a href="mailto:arvitk65@gmail.com"><i class="fas fa-envelope"></i>
+                    arvitk65@gmail.com</a>
+                <p><i class="fas fa-globe"></i> Worldwide · Remote</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NexusForge — Forging digital empires.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

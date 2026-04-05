@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusForge | Hire Us – Contact</title>
+    <link rel="icon" type="image/png" href="asset/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for larger contact page + map */
+        .contact-wrapper {
+            max-width: 1400px;
+            margin: 4rem auto;
+            gap: 4rem;
+            padding: 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1;
+            padding: 3rem;
+            border-radius: 48px;
+            background: #111118;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-info:hover,
+        .contact-form:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info ul {
+            margin: 2rem 0;
+        }
+
+        .contact-info li {
+            font-size: 1.2rem;
+            margin: 1.2rem 0;
+            gap: 1rem;
+        }
+
+        .contact-info li i {
+            font-size: 1.5rem;
+            width: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        input,
+        textarea {
+            padding: 1.2rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 32px;
+            background: #1A1A24;
+            width: 100%;
+            border: 1px solid #2C2C3A;
+            color: white;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.2rem;
+            border-radius: 48px;
+            margin-top: 0.5rem;
+        }
+
+        .form-status {
+            font-size: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 32px;
+            text-align: center;
+        }
+
+        .form-status.success {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+
+        .form-status.error {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+        }
+
+        /* Map Section */
+        .map-section {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .map-container {
+            background: #111118;
+            border-radius: 48px;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .map-container h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .map-container h3 i {
+            color: #C084FC;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 350px;
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(192, 132, 252, 0.3);
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .address-text {
+            margin-top: 1rem;
+            text-align: center;
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        .address-text i {
+            color: #C084FC;
+            margin-right: 0.5rem;
+        }
+
+        /* Extra contact details row */
+        .contact-extras {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(17, 17, 24, 0.5);
+            border-radius: 48px;
+            backdrop-filter: blur(8px);
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .extra-card {
+            flex: 1;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .extra-card i {
+            font-size: 2.5rem;
+            color: #C084FC;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .extra-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .extra-card p {
+            color: #aaa;
+        }
+
+        @media (max-width: 860px) {
+            .contact-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+                margin: 2rem auto;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 1.8rem;
+            }
+
+            .contact-info h3 {
+                font-size: 1.8rem;
+            }
+
+            .map-frame {
+                height: 250px;
+            }
+
+            .contact-extras {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-code-branch"></i> Nexus<span>Forge</span></a>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header reveal">
+            <h1>Let’s <span class="gradient-text">forge</span> something great</h1>
+            <p>Tell us about your business, shop, or idea — we’ll get back within 24h.</p>
+        </section>
+
+        <div class="contact-wrapper container">
+            <div class="contact-info reveal">
+                <h3><i class="fas fa-paper-plane"></i> Hire us directly</h3>
+                <p>Whether you need a blazing-fast e‑commerce store, a corporate website, or a full‑stack web app — we
+                    deliver pixel-perfect, scalable solutions. <strong>Your vision, our code.</strong></p>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> <strong>Email:</strong> arvitk65@gmail.com</li>
+                    <li><i class="fas fa-calendar-alt"></i> <strong>Free consultation</strong> – 30 min discovery call
+                    </li>
+                    <li><i class="fas fa-clock"></i> <strong>Fast turnaround:</strong> 2-week MVP delivery</li>
+                    <li><i class="fas fa-globe"></i> <strong>Remote worldwide</strong> – we work across timezones</li>
+                </ul>
+            </div>
+
+            <form id="contactForm" class="contact-form reveal">
+                <div class="form-group">
+                    <input type="text" id="userName" placeholder="Your full name *" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="userEmail" placeholder="Email address *" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="userProject"
+                        placeholder="Project type (e.g., E‑commerce shop, Business site, Web app)">
+                </div>
+                <div class="form-group">
+                    <textarea id="userMessage" rows="5"
+                        placeholder="Describe your project, goals, or any questions... *" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="sendBtn"><i class="fas fa-send"></i> Send
+                    message</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+
+        <!-- MAP SECTION (NEW) -->
+        <div class="map-section reveal">
+            <div class="map-container">
+                <h3><i class="fas fa-map-pin"></i> Our Digital Hub</h3>
+                <div class="map-frame">
+                    <!-- Google Maps embed showing a central location (Times Square, NYC as example) -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4182.346138177275!2d75.8777122380445!3d26.775452735972383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dc892b8f05399%3A0x43fbca7105eca800!2sJECRC%20University!5e1!3m2!1sen!2sin!4v1775396045072!5m2!1sen!2sin"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="address-text">
+                    <i class="fas fa-location-dot"></i> NexusForge Global HQ (Virtual) – New York, NY / Remote Worldwide
+                </div>
+            </div>
+        </div>
+
+        <!-- Extra enlarged section: working hours & location -->
+        <div class="contact-extras container reveal">
+            <div class="extra-card">
+                <i class="fas fa-headset"></i>
+                <h4>24/7 Support</h4>
+                <p>We're here for you – even after launch.</p>
+            </div>
+            <div class="extra-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h4>Global Hub</h4>
+                <p>Remote-first team – serving clients worldwide.</p>
+            </div>
+            <div class="extra-card">
+                <i class="fas fa-chart-simple"></i>
+                <h4>100+ Projects</h4>
+                <p>Trusted by startups and enterprises alike.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3><i class="fas fa-code-branch"></i> NexusForge</h3>
+                <p>Where pixels meet performance — we build websites that work 24/7.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/arvit_kumar_77/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/Arvit_Kumar_77" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://github.com/arvitkumar" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/arvit-kumar-01a5a9325/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BfY0Euqt8QJqQI4v2pjj86Q%3D%3D" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4><a href="index.html">Home</a><a href="projects.html">Projects</a><a
+                    href="contact.html">Contact</a>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4><a href="mailto:arvitk65@gmail.com"><i class="fas fa-envelope"></i>
+                    arvitk65@gmail.com</a>
+                <p><i class="fas fa-globe"></i> Worldwide · Remote</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NexusForge — Forging digital empires.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
