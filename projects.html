@@ -350,6 +350,355 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
+    <!-- Chatbot Widget with OpenRouter AI -->
+    <div class="chatbot-container">
+        <div class="chatbot-button" id="chatbotButton">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3><i class="fas fa-robot"></i> NexusBot AI</h3>
+                <button id="closeChatbot"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="bot-message">
+                    <i class="fas fa-robot"></i>
+                    <p>Hi there! 👋 I'm NexusBot AI. Ask me anything about our services, pricing, or your project!</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your question...">
+                <button id="sendChatbot"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+        }
+    
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #C084FC, #9333EA);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(192, 132, 252, 0.4);
+            transition: all 0.3s ease;
+        }
+    
+        .chatbot-button:hover {
+            transform: scale(1.1);
+        }
+    
+        .chatbot-button i {
+            font-size: 28px;
+            color: white;
+        }
+    
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 520px;
+            background: #111118;
+            border-radius: 24px;
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.3s ease;
+        }
+    
+        .chatbot-window.active {
+            display: flex;
+        }
+    
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+    
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .chatbot-header {
+            background: linear-gradient(135deg, #1A1A28, #0F0F17);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(192, 132, 252, 0.3);
+        }
+    
+        .chatbot-header h3 {
+            color: #C084FC;
+            margin: 0;
+            font-size: 18px;
+        }
+    
+        .chatbot-header h3 i {
+            margin-right: 8px;
+        }
+    
+        .chatbot-header button {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+    
+        .chatbot-header button:hover {
+            color: white;
+        }
+    
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+    
+        .bot-message,
+        .user-message {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            animation: messageSlide 0.3s ease;
+        }
+    
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+    
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    
+        .bot-message i {
+            color: #C084FC;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+    
+        .user-message {
+            flex-direction: row-reverse;
+        }
+    
+        .user-message i {
+            color: #9333EA;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+    
+        .bot-message p,
+        .user-message p {
+            background: #1A1A24;
+            padding: 10px 14px;
+            border-radius: 18px;
+            max-width: 80%;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    
+        .user-message p {
+            background: linear-gradient(135deg, #C084FC, #9333EA);
+            color: white;
+        }
+    
+        .chatbot-input {
+            padding: 15px;
+            border-top: 1px solid rgba(192, 132, 252, 0.2);
+            display: flex;
+            gap: 10px;
+        }
+    
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 15px;
+            background: #1A1A24;
+            border: 1px solid #2C2C3A;
+            border-radius: 25px;
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+        }
+    
+        .chatbot-input input:focus {
+            outline: none;
+            border-color: #C084FC;
+        }
+    
+        .chatbot-input button {
+            background: linear-gradient(135deg, #C084FC, #9333EA);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+    
+        .chatbot-input button:hover {
+            transform: scale(1.05);
+        }
+    
+        @media (max-width: 480px) {
+            .chatbot-window {
+                width: 320px;
+                height: 480px;
+                right: -20px;
+            }
+        }
+    </style>
+    
+    <script>
+        // Chatbot with OpenRouter API
+        document.addEventListener('DOMContentLoaded', function () {
+            // YOUR OPENROUTER API KEY - PUT YOUR ACTUAL KEY HERE
+            const OPENROUTER_API_KEY = "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";
+
+            // Your website info (replace with your actual site URL and name)
+            const YOUR_SITE_URL = "https://nexusforge.dev";  // Change to your actual URL
+            const YOUR_SITE_NAME = "NexusForge";
+
+            const chatbotButton = document.getElementById('chatbotButton');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const sendButton = document.getElementById('sendChatbot');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+
+            // Open/Close Chatbot
+            chatbotButton.addEventListener('click', () => {
+                chatbotWindow.classList.toggle('active');
+            });
+
+            closeChatbot.addEventListener('click', () => {
+                chatbotWindow.classList.remove('active');
+            });
+
+            // Add message to chat
+            function addMessage(text, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = isUser ? 'user-message' : 'bot-message';
+                const icon = isUser ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+                messageDiv.innerHTML = icon + '<p>' + text.replace(/\n/g, '<br>') + '</p>';
+                chatbotMessages.appendChild(messageDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            // Get response from OpenRouter API
+            async function getOpenRouterResponse(userMessage) {
+                const systemPrompt = `You are NexusBot, an AI assistant for NexusForge, a web development agency. 
+        
+    Key information about NexusForge:
+    - Services: E-commerce shops, business websites, web apps, SEO optimization, responsive design
+    - Pricing: Starts at $2,000 for basic business websites, $3,500+ for e-commerce, custom quotes for complex projects
+    - Timeline: 2-6 weeks for most projects, MVP in 2 weeks
+    - Portfolio: Visit the Projects page to see work (UrbanThreads, BeanCraft, IronFit AI, ArtSpace Gallery)
+    - Contact: Via contact form on website or email hello@nexusforge.dev
+    - Free consultation: 30-minute discovery call available
+    - Support: 24/7 for all clients
+    - Tech stack: React, Node.js, Vue, Python, MongoDB, Tailwind CSS
+    
+    Response guidelines:
+    - Keep responses friendly, concise (2-3 sentences when possible)
+    - Be helpful and professional
+    - Encourage visitors to contact for detailed quotes
+    - If unsure, suggest visiting the Contact page`;
+
+                try {
+                    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                            "Content-Type": "application/json",
+                            "HTTP-Referer": YOUR_SITE_URL,
+                            "X-Title": YOUR_SITE_NAME
+                        },
+                        body: JSON.stringify({
+                            model: "google/gemini-3-flash-preview", // Fast free model
+                            messages: [
+                                { role: "system", content: systemPrompt },
+                                { role: "user", content: userMessage }
+                            ],
+                            max_tokens: 300,
+                            temperature: 0.7
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.choices && data.choices[0] && data.choices[0].message) {
+                        return data.choices[0].message.content;
+                    } else {
+                        console.error("API Error:", data);
+                        return "I'm having trouble connecting right now. Please visit our Contact page or email hello@nexusforge.dev for immediate assistance. 🙏";
+                    }
+                } catch (error) {
+                    console.error("OpenRouter Error:", error);
+                    return "Oops! Having technical difficulties. Please reach out via our contact form or email hello@nexusforge.dev. We'll get back to you within 24 hours! 🚀";
+                }
+            }
+
+            // Send message function
+            async function sendMessage() {
+                const userMessage = chatbotInput.value.trim();
+                if (userMessage === '') return;
+
+                addMessage(userMessage, true);
+                chatbotInput.value = '';
+
+                // Show typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'bot-message';
+                typingDiv.id = 'typingIndicator';
+                typingDiv.innerHTML = '<i class="fas fa-robot"></i><p><i class="fas fa-ellipsis-h"></i> Thinking...</p>';
+                chatbotMessages.appendChild(typingDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+                // Get AI response
+                const botResponse = await getOpenRouterResponse(userMessage);
+
+                // Remove typing indicator
+                document.getElementById('typingIndicator')?.remove();
+
+                // Add bot response
+                addMessage(botResponse, false);
+            }
+
+            // Event listeners
+            sendButton.addEventListener('click', sendMessage);
+            chatbotInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+        });
+    </script>
 </body>
 
 </html>
