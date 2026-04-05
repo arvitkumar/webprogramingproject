@@ -643,8 +643,8 @@
                         headers: {
                             "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
                             "Content-Type": "application/json",
-                            "HTTP-Referer": YOUR_SITE_URL,
-                            "X-Title": YOUR_SITE_NAME
+                            "HTTP-Referer": "https://nexusforge-five.vercel.app/",
+                            "X-Title": "NexusForge"
                         },
                         body: JSON.stringify({
                             model: "google/gemini-3-flash-preview", // Fast free model
@@ -663,11 +663,11 @@
                         return data.choices[0].message.content;
                     } else {
                         console.error("API Error:", data);
-                        return "I'm having trouble connecting right now. Please visit our Contact page or email hello@nexusforge.dev for immediate assistance. 🙏";
+                        return "I'm having trouble connecting right now. Please visit our Contact page or email arvit65@gmail.com for immediate assistance. 🙏";
                     }
                 } catch (error) {
                     console.error("OpenRouter Error:", error);
-                    return "Oops! Having technical difficulties. Please reach out via our contact form or email hello@nexusforge.dev. We'll get back to you within 24 hours! 🚀";
+                    return "Oops! Having technical difficulties. Please reach out via our contact form or email arvit65@gmail.com. We'll get back to you within 24 hours! 🚀";
                 }
             }
 
